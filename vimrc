@@ -1,34 +1,64 @@
-set mouse=a
+let mapleader=","  "前缀键
+set mouse=a        "使用鼠标
 
 colorscheme desert "配色方案
 syntax on          "语法高亮
 set number         "显示行号
-set cursorline     "高亮当前行
-set showcmd        "命令行显示输入
+set showcmd        "显示输入
+
+"高亮当前位置
+set cursorline
+highlight CursorLine guibg=#003853 ctermbg=24 gui=none cterm=none
+set cursorcolumn
+highlight CursorColumn guibg=#003853 ctermbg=24 gui=none cterm=none
 
 set ignorecase     "搜索大小写不敏感
 set incsearch      "实时搜索
 set hlsearch       "高亮匹配
+nmap <leader>/ :nohl<CR> "关闭高亮
+
+nmap <leader>f     :grep <C-R><C-W> -r .<CR>:cw<CR>
 
 set paste          "智能粘贴
 
 set noexpandtab    "不转换tab为空格
 set tabstop=8      "设置tab宽度为8
 
-filetype plugin on
+filetype plugin on "根据文件载入插件
+"set completeopt=longest,menu "自动补全
 
-let mapleader=","  "前缀键
-
-nmap <C-P>         :NERDTreeToggle<CR>
-nmap <leader>e     :Te<CR>
+"nerdtree
+nmap <leader>e     :NERDTreeToggle<CR>
+let g:NERDTreeWinPos="right" "位置
+let NERDTreeWinSize=30       "宽度
+"nmap <leader>e     :Te<CR>
 nmap <leader>1     1gt
 nmap <leader>2     2gt
 nmap <leader>3     3gt
-nmap <leader>4     4gt
-nmap <leader>5     5gt
-nmap <leader>6     6gt
-nmap <leader>7     7gt
 
+"tagbar
 nmap <leader>t     :TagbarToggle<CR>
-nmap <leader>d     :grep <C-R><C-W> -r .<CR>:cw<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_left=1          "位置
+let g:tagbar_width=30        "宽度
+
+"F1开关行号
+function! HideNumber()
+    if (&relativenumber == &number)
+        set relativenumber! number!
+    elseif (&number)
+        set number!
+    else
+        set relativenumber!
+    endif
+    set number?
+endfunc
+nnoremap <F1> :call HideNumber()<CR>
+
+"跳转居中
+nnoremap <silent> n  nzz
+nnoremap <silent> N  Nzz
+nnoremap <silent> *  *zz
+nnoremap <silent> #  #zz
+nnoremap <silent> g* g*zz
 
