@@ -17,13 +17,15 @@ set incsearch      "实时搜索
 set hlsearch       "高亮匹配
 nmap <leader>/ :nohl<CR> "关闭高亮
 
-nmap <leader>f     :grep <C-R><C-W> -r .<CR>:cw<CR>
+nmap <leader>d     :grep <C-R><C-W> -r .<CR>:cw<CR>
 
 set paste          "智能粘贴
 set backspace=2    "智能删除
 
 set noexpandtab    "不转换tab为空格
-set tabstop=8      "设置tab宽度为8
+set tabstop=4      "设置tab宽度为4
+"set list
+set listchars=tab:->,trail:-
 
 filetype plugin on "根据文件载入插件
 "set completeopt=longest,menu "自动补全
