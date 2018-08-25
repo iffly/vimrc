@@ -20,6 +20,7 @@ nmap <leader>/ :nohl<CR> "关闭高亮
 nmap <leader>f     :grep <C-R><C-W> -r .<CR>:cw<CR>
 
 set paste          "智能粘贴
+set backspace=2    "智能删除
 
 set noexpandtab    "不转换tab为空格
 set tabstop=8      "设置tab宽度为8
